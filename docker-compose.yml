@@ -1,0 +1,55 @@
+version: '3.8'
+
+services:
+  # 1. The Database
+  db:
+    image: postgres:15-alpine
+    container_name: skylogger_db
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: password123
+      POSTGRES_DB: flight_data
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - sky_network
+
+  # 2. The Ingestor (Backend Script)
+  ingestor:
+    build: ./ingestor
+    container_name: skylogger_ingestor
+    depends_on:
+      - db
+    environment:
+      DB_HOST: db
+      DB_NAME: flight_data
+      DB_USER: admin
+      DB_PASS: password123
+    networks:
+      - sky_network
+
+  # 3. The Dashboard (Frontend App)
+  dashboard:
+    build: ./dashboard
+    container_name: skylogger_dashboard
+    command: streamlit run app.py --server.address=0.0.0.0 --server.enableCORS=false
+    ports:
+      - "8501:8501"
+    depends_on:
+      - db
+    environment:
+      DB_HOST: db
+      DB_NAME: flight_data
+      DB_USER: admin
+      DB_PASS: password123
+    networks:
+      - sky_network
+
+volumes:
+  postgres_data:
+
+networks:
+  sky_network:
+    driver: bridge
