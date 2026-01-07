@@ -34,7 +34,7 @@ graph TD;
     end
     D[OpenSky API] -->|JSON Stream| A;
     E[User Browser] -->|HTTP Request| C;
-
+```
 ---
 🚀 Installation & Usage
 Prerequisites
