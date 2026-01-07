@@ -35,7 +35,7 @@ graph TD;
     D[OpenSky API] -->|JSON Stream| A;
     E[User Browser] -->|HTTP Request| C;
 ```
----
+
 🚀 Installation & Usage
 Prerequisites
 Docker Desktop installed and running.
@@ -50,9 +50,11 @@ cd skylogger-project
 2. Build and Run
 Launch the entire system with a single command:
 
-Bash
+```Bash
 
 docker compose up --build
+```
+
 Wait until you see the log message: ✅ Connected to Database.
 
 3. Access the Dashboard
@@ -68,12 +70,13 @@ The project includes unit tests to verify core logic (e.g., coordinate validatio
 
 To run the tests, execute the following command:
 
-Bash
+```Bash
 
 python -m unittest ingestor/tests/test_logic.py
+```
 
 📂 Project Structure
-Plaintext
+```Plaintext
 
 skylogger-project/
 ├── docker-compose.yml       # Orchestration config for all services
@@ -87,6 +90,7 @@ skylogger-project/
 │   ├── Dockerfile
 │   ├── requirements.txt
 │   └── app.py               # Streamlit Dashboard Application
+```
 
 ⚖️ License & Credits
 Data Source: OpenSky Network API
