@@ -43,10 +43,12 @@ Docker Desktop installed and running.
 Git installed.
 
 1. Clone the Repository
-Bash
+```Bash
 
-git clone [https://github.com/YOUR_USERNAME/skylogger-project.git](https://github.com/YOUR_USERNAME/skylogger-project.git)
+git clone [https://github.com/Pordilz/skylogger-project.git](https://github.com/Pordilz/skylogger-project.git)
 cd skylogger-project
+```
+
 2. Build and Run
 Launch the entire system with a single command:
 
@@ -63,7 +65,7 @@ Open your web browser and navigate to:
 http://localhost:8501
 
 (If localhost does not work, try: https://www.google.com/search?q=http://127.0.0.1:8501)
----
+
 
 🧪 Testing
 The project includes unit tests to verify core logic (e.g., coordinate validation and unit conversions).
